@@ -22,9 +22,10 @@
     <body ng-app="search_pics">
         <div id="container" ng-controller="SearchController" >
             <header>
-                <div id="titre" onclick="window.location.reload();">SearchPics&nbsp;<div class="chargement"></div></div>
-                <input ui-sref="new" type="button" class="RECHERCHE" value="Populaire"/>
-                <input type="button" class="RECHERCHE" value="Nouveau" onclick="preparerChargementImages('http://www.reddit.com/r/pics/new/.json?jsonp=?&show=all&limit=300')"/>
+
+                <div id="titre" ui-sref="new">SearchPics&nbsp;<div class="chargement"></div></div>
+                <input type="button" class="RECHERCHE" value="Populaire" onclick="preparerChargementImages('http://www.reddit.com/r/pics/.json?jsonp=?&show=all&limit=300')"/>
+                <input type="button" class="RECHERCHE" value="Nouveau" ui-sref="new"/>
                 <input type="button" class="RECHERCHE" value="En progression" onclick="preparerChargementImages('https://www.reddit.com/r/pics/rising/.json?jsonp=?&show=all&limit=300')"/>
                 <input type="button" class="RECHERCHE" value="Controversé" onclick="preparerChargementImages('https://www.reddit.com/r/pics/controversial/.json?jsonp=?&show=all&limit=300')"/>
                 <input type="button" class="RECHERCHE" value="Le meilleur" onclick="preparerChargementImages('https://www.reddit.com/r/pics/top/.json?jsonp=?&show=all&limit=300')"/>
