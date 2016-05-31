@@ -48,8 +48,8 @@
                 </div>
 
             </section>
-
-            <div id="panel_detail_image" ng-show="showDetailPicture">
+            
+            <div id="panel_detail_image" ng-show="showDetailPicture" ng-view>
                 <a ng-click="showDetailPicture = false"><img src="images/cross.png" alt="" title="Fermer"/></a>
                 <div id="detail_image"><img src="{{urlImage}}" alt=""/></div>
             </div>
