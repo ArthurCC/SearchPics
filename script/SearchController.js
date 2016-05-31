@@ -1,30 +1,6 @@
-var myApp = angular.module('search_pics',[]);
+myApp.controller('SearchController', ['$scope', '$http', 'SearchService', function($scope, $http) {
 
-myApp.filter('nsfw', function() {
-  return function(list) {
-      if(!list){return};
-      var result = [];
-      for(i = 0; i < list.length; i++) {
-          if(list[i].data.url.indexOf("i.imgur") > -1 && list[i].data.url.indexOf("gif") == -1  && list[i].data.thumbnail != 'nsfw'){
-              result.push(list[i]);
-          }
-      }
-      stack = result.length;
-      return result;
-    }
-});
-
-myApp.controller('SearchController', ['$scope', '$http', function($scope, $http) {
-
-  console.log("Controler Search");
-
-  $http.get("https://www.reddit.com/r/pics/new.json?sort=new&limit=100")
-      .success(function(response) {
-          $scope.images = response.data.children;
-          console.log($scope.images);
-      });
-
-
+  console.log("Search Controller");
   $scope.urlRecherche = "https://www.reddit.com/r/pics/search.json?";
   $scope.showDetailPicture = false;
 
@@ -34,12 +10,12 @@ myApp.controller('SearchController', ['$scope', '$http', function($scope, $http)
   }
 
   $scope.preparerChargementImages = function(url) {
-  	fermerDetailImage();
+  	//fermerDetailImage();
 
   	$('.chargement').addClass('afficher');
-  	$('#les_images').html('');
+  	//$('#les_images').html('');
 
-  	chargerImages(url);
+  	$scope.chargerImages(url);
 
   	setTimeout(function() {
   		$('div.afficher').removeClass('afficher');
@@ -52,15 +28,15 @@ myApp.controller('SearchController', ['$scope', '$http', function($scope, $http)
   }
 
   $scope.chargerImages = function(url) {
-  	$.getJSON(url, function(data) {
-  		data.data.children.forEach((item) => {
-  			isValidImageUrl(item.data.url, function(url, isValid) {
-  				if(isValid) {
-  					$('#les_images').append(getHtmlImage(item.data));
-  				}
-  			});
-  		});
-  	});
+    $http.get(url)
+        .success(function(response) {
+          $scope.images = response.data.children;
+        });
+  }
+
+  $scope.afficherDetailImage = function(urlImage) {
+    $scope.urlImage = urlImage;
+    $scope.showDetailPicture = true;
   }
 
 }]);
