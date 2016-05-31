@@ -23,7 +23,7 @@
         <div id="container" ng-controller="SearchController" >
             <header>
                 <div id="titre" onclick="window.location.reload();">SearchPics&nbsp;<div class="chargement"></div></div>
-                <input type="button" class="RECHERCHE" value="Populaire" onclick="preparerChargementImages('http://www.reddit.com/r/pics/.json?jsonp=?&show=all&limit=300')"/>
+                <input ui-sref="new" type="button" class="RECHERCHE" value="Populaire"/>
                 <input type="button" class="RECHERCHE" value="Nouveau" onclick="preparerChargementImages('http://www.reddit.com/r/pics/new/.json?jsonp=?&show=all&limit=300')"/>
                 <input type="button" class="RECHERCHE" value="En progression" onclick="preparerChargementImages('https://www.reddit.com/r/pics/rising/.json?jsonp=?&show=all&limit=300')"/>
                 <input type="button" class="RECHERCHE" value="Controversé" onclick="preparerChargementImages('https://www.reddit.com/r/pics/controversial/.json?jsonp=?&show=all&limit=300')"/>
@@ -37,7 +37,7 @@
             <section id="affichage">
 
                 <div id="les_images">
-                    <div ng-repeat="image in images | nsfw:this " class="infos-image" ng-click="afficherDetailImage('{{image.data.url}}')">
+                    <div ng-repeat="image in images | nsfw:this" class="infos-image" ng-click="afficherDetailImage('{{image.data.url}}')">
                   			<div ng-mouseover="showLegend = true" ng-mouseleave="showLegend = false" class="photo">
                   				<img src="{{image.data.url}}" alt=""/>
                   			</div>
@@ -48,8 +48,8 @@
                 </div>
 
             </section>
-            
-            <div id="panel_detail_image" ng-show="showDetailPicture" ng-view>
+
+            <div id="panel_detail_image" ng-show="showDetailPicture">
                 <a ng-click="showDetailPicture = false"><img src="images/cross.png" alt="" title="Fermer"/></a>
                 <div id="detail_image"><img src="{{urlImage}}" alt=""/></div>
             </div>

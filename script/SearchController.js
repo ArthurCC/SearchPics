@@ -35,6 +35,7 @@ myApp.controller('SearchController', ['$scope', '$http', 'SearchService', functi
   }
 
   $scope.afficherDetailImage = function(urlImage) {
+    console.log("HEY");
     $scope.urlImage = urlImage;
     $scope.showDetailPicture = true;
   }
