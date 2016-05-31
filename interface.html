@@ -21,9 +21,9 @@
     <body ng-app="search_pics">
         <div id="container" ng-controller="SearchController" >
             <header>
-                <div id="titre" onclick="window.location.reload();">SearchPics&nbsp;<div class="chargement"></div></div>
+                <div id="titre" ui-sref="new">SearchPics&nbsp;<div class="chargement"></div></div>
                 <input type="button" class="RECHERCHE" value="Populaire" onclick="preparerChargementImages('http://www.reddit.com/r/pics/.json?jsonp=?&show=all&limit=300')"/>
-                <input type="button" class="RECHERCHE" value="Nouveau" onclick="preparerChargementImages('http://www.reddit.com/r/pics/new/.json?jsonp=?&show=all&limit=300')"/>
+                <input type="button" class="RECHERCHE" value="Nouveau" ui-sref="new"/>
                 <input type="button" class="RECHERCHE" value="En progression" onclick="preparerChargementImages('https://www.reddit.com/r/pics/rising/.json?jsonp=?&show=all&limit=300')"/>
                 <input type="button" class="RECHERCHE" value="Controversé" onclick="preparerChargementImages('https://www.reddit.com/r/pics/controversial/.json?jsonp=?&show=all&limit=300')"/>
                 <input type="button" class="RECHERCHE" value="Le meilleur" onclick="preparerChargementImages('https://www.reddit.com/r/pics/top/.json?jsonp=?&show=all&limit=300')"/>
@@ -35,20 +35,12 @@
 
             <section id="affichage">
 
-                <div id="les_images">
-                    <div ng-repeat="image in images | nsfw:this " class="infos-image" onmouseout="cacherLegende(\'{{image.data.id}}\');" onmouseover="afficherLegende(\'' + image.id + '\');" onclick="afficherDetailImage(\'' + image.url + '\')">
-                  			<div class="photo" id="photo_{{image.data.id}}">
-                  				<img src="{{image.data.url}}" alt=""/>
-                  			</div>
-                  			<div class="legende" id="legende_{{image.data.id}}">
-                  				<p>' + image.data.title + '</p>
-                  			</div>
-                		</div>
+                <div id="les_images" ng-view>
                 </div>
 
             </section>
 
-            <div id="panel_detail_image" ng-view>
+            <div id="panel_detail_image">
                 <a onclick="fermerDetailImage();"><img src="images/cross.png" alt="" title="Fermer"/></a>
                 <div id="detail_image"><img src="{{urlImage}}" alt=""/></div>
             </div>
