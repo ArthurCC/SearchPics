@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta http-equiv="content-type" content="text/html; charset=utf-8"/>
+        <title>API Reddit</title>
+        <link rel="stylesheet" href="styles/screen.css" media="screen"/>
+        <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.8/jquery.min.js"></script>
+        <script type="text/babel" src="https://cdnjs.cloudflare.com/ajax/libs/babel-core/5.8.23/browser.min.js"></script>
+        <script type="text/javascript" src="script/application.js"></script>
+    </head>
+
+    <body>
+        <div id="container">
+            <header>
+                <div id="titre" onclick="window.location.reload();">SearchPics&nbsp;<div class="chargement"></div></div>
+                <input type="button" class="RECHERCHE" value="Populaire" onclick="preparerChargementImages('http://www.reddit.com/r/pics/.json?jsonp=?&show=all&limit=300')"/>
+                <input type="button" class="RECHERCHE" value="Nouveau" onclick="preparerChargementImages('http://www.reddit.com/r/pics/new/.json?jsonp=?&show=all&limit=300')"/>
+                <input type="button" class="RECHERCHE" value="En progression" onclick="preparerChargementImages('https://www.reddit.com/r/pics/rising/.json?jsonp=?&show=all&limit=300')"/>
+                <input type="button" class="RECHERCHE" value="Controversé" onclick="preparerChargementImages('https://www.reddit.com/r/pics/controversial/.json?jsonp=?&show=all&limit=300')"/>
+                <input type="button" class="RECHERCHE" value="Le meilleur" onclick="preparerChargementImages('https://www.reddit.com/r/pics/top/.json?jsonp=?&show=all&limit=300')"/>
+
+                <span  id="zone_recherche">
+                    <input type="search" placeholder="Rechercher" id="search_bar"/>
+                    <img src="images/search.png" alt="" onclick="preparerRecherche()" title="Rechercher"/>
+                </span>
+            </header>
+
+            <section id="affichage">
+                <div id="les_images"></div>
+            </section>
+
+            <div id="panel_detail_image">
+                <a onclick="fermerDetailImage();"><img src="images/cross.png" alt="" title="Fermer"/></a>
+                <div id="detail_image"></div>
+            </div>
+
+        </div>
+    </body>
+</html>

@@ -1,0 +1,141 @@
+@import url(https://fonts.googleapis.com/css?family=Open+Sans);
+@import url(https://fonts.googleapis.com/css?family=Pacifico);
+
+header {
+	background-color: #2E2E2E;
+	position: fixed;
+	width: 100%;
+	z-index: 3;
+}
+
+#titre {
+	display: inline-block;
+	padding: 5px 10px 12px 15px;
+	background-color: #424242;
+	cursor: pointer;
+	font-size: 30px;
+	font-family: 'Pacifico', cursive;
+	color: #BDBDBD;
+}
+
+form {
+	display: inline-block;
+	vertical-align: center;
+}
+
+body {
+	margin: 0;
+	background-color: #EBEAEA;
+	font-family: 'Open Sans', sans-serif;
+}
+
+#affichage {
+	padding-top: 80px;
+}
+
+.infos-image {
+	display: inline-block;
+	position: relative;
+	height: 300px;
+	width: 24%;
+	margin-left: 5px;
+	margin-right: 5px;
+	margin-bottom: 5px;
+	cursor: pointer;
+}
+
+#les_images {
+	max-width: 1500px;
+	margin: auto;
+}
+
+#les_images img {
+	width: 100%;
+	height: 300px;
+}
+
+.photo {
+	position: absolute;
+	z-index: 1;
+	width: 100%;
+}
+
+.legende {
+	position: absolute;
+	width: 100%;
+	height: auto;
+	z-index: 2;
+	color: #FFFFFF;
+	background-color: rgba(51, 51, 51, 0.8);
+	display: none;
+	font-size: 10px;
+	bottom: 0;
+}
+
+.legende p {
+	margin-left: 10px;
+	margin-right: 10px;
+}
+
+.RECHERCHE {
+	background-color: #6E6E6E;
+	border-radius: 3px;
+	border: 1px solid #6E6E6E;
+	color: #000000;
+	height: 23px;
+	margin-left: 15px;
+}
+
+.RECHERCHE:hover {
+	cursor: pointer;
+	background-color: #E6E6E6;
+}
+
+#panel_detail_image {
+	background-color: rgba(0, 0, 0, 0.8);
+	position: fixed;
+	width: 100%;
+	height: 100%;
+	top: 70px;
+	display: none;
+	z-index: 4;
+}
+
+#panel_detail_image a {
+	cursor: pointer;
+	float: right;
+	margin: 15px;
+}
+
+#detail_image {
+	text-align: center;
+	padding-top: 5%;
+}
+
+#detail_image img {
+	max-width: 1000px;
+	max-height: 550px;
+}
+
+.chargement {
+	display: inline-block;
+	width: 16px;
+	height: 16px;
+	background-image: url(../images/gris.png);
+}
+
+.chargement.afficher {
+	background-image: url(../images/chargement.gif);
+}
+
+#zone_recherche {
+	margin-top: 24px;
+	margin-right: 20px;
+	float: right;
+}
+
+#zone_recherche img {
+	vertical-align: bottom;
+	margin-bottom: 5px;
+	cursor: pointer;
+}
