@@ -38,19 +38,6 @@ function isValidImageUrl(url, callback) {
     img.src = url;
 }
 
-function getHtmlImage(image) {
-	return '\
-		<div class="infos-image" onmouseout="cacherLegende(\'' + image.id + '\');" onmouseover="afficherLegende(\'' + image.id + '\');" onclick="afficherDetailImage(\'' + image.url + '\')">\
-			<div class="photo" id="photo_' + image.id + '">\
-				<img src="' + image.url + '" alt=""/>\
-			</div>\
-			<div class="legende" id="legende_' + image.id + '">\
-				<p>' + image.title + '</p>\
-			</div>\
-		</div>\
-	';
-}
-
 function afficherLegende(idImage) {
 	$('#legende_' + idImage).show();
 }
